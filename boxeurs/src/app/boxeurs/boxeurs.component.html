@@ -1,0 +1,186 @@
+<table mat-table #tableBoxeurs [dataSource]="boxeurs" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let boxeur">
+          <form #boxeurFormEdition="ngForm" id="boxeurFormEdition" (ngSubmit)="boxeurFormEdition.form.valid && onEdit(boxeurFormEdition)">
+              <mat-form-field *ngIf="(selectedBoxeurs && selectedBoxeurs === boxeur);else editName;" class="input-full-width">
+                  <input name="selectedBoxeurName" [(ngModel)]="selectedBoxeurs.name" matInput required minlength="2" maxlength="50" name="nameEdition" #nameEdition="ngModel">
+                  <mat-error *ngIf="nameEdition.invalid && (nameEdition.dirty || nameEdition.touched) && nameEdition.hasError('required')">Le name est obligatoire.</mat-error>
+                  <mat-error *ngIf="nameEdition.invalid && (nameEdition.dirty || nameEdition.touched) && nameEdition.hasError('minlength')">Le name doit contenir au moins 2 caractères.</mat-error>
+                  <mat-error *ngIf="nameEdition.invalid && (nameEdition.dirty || nameEdition.touched) && nameEdition.hasError('maxlength')">Le name doit contenir au maximum 50 caractères.</mat-error>
+              </mat-form-field>
+          </form>
+          <ng-template #editName><span (click)="onSelect(boxeur)">{{boxeur.name}}</span></ng-template>
+      </td>
+    </ng-container>  
+    <!-- Nickname Column -->
+    <ng-container matColumnDef="nickname">
+      <th mat-header-cell *matHeaderCellDef> Nickname </th>
+      <td mat-cell *matCellDef="let boxeur">
+          <form #boxeurFormEdition="ngForm" id="boxeurFormEdition" (ngSubmit)="boxeurFormEdition.form.valid && onEdit(boxeurFormEdition)">
+              <mat-form-field *ngIf="(selectedBoxeurs && selectedBoxeurs === boxeur);else editNickname;" class="input-full-width">
+                  <input name="selectedBoxeurNickname" [(ngModel)]="selectedBoxeurs.nickname" matInput required minlength="2" maxlength="50" name="nicknameEdition" #nicknameEdition="ngModel">
+                  <mat-error *ngIf="nicknameEdition.invalid && (nicknameEdition.dirty || nicknameEdition.touched) && nicknameEdition.hasError('required')">Le nickname est obligatoire.</mat-error>
+                  <mat-error *ngIf="nicknameEdition.invalid && (nicknameEdition.dirty || nicknameEdition.touched) && nicknameEdition.hasError('minlength')">Le nickname doit contenir au moins 2 caractères.</mat-error>
+                  <mat-error *ngIf="nicknameEdition.invalid && (nicknameEdition.dirty || nicknameEdition.touched) && nicknameEdition.hasError('maxlength')">Le nickname doit contenir au maximum 50 caractères.</mat-error>
+              </mat-form-field>
+          </form>
+          <ng-template #editNickname><span (click)="onSelect(boxeur)">{{boxeur.nickname}}</span></ng-template>
+      </td>
+    </ng-container>
+
+  
+            <!-- nbVictory Column -->
+            <ng-container matColumnDef="nbVictory">
+              <th mat-header-cell *matHeaderCellDef> nbVictory </th>
+              <td mat-cell *matCellDef="let boxeur">
+                  <form #boxeurFormEdition="ngForm" id="boxeurFormEdition" (ngSubmit)="boxeurFormEdition.form.valid && onEdit(boxeurFormEdition)">
+                      <mat-form-field *ngIf="(selectedBoxeurs && selectedBoxeurs === boxeur);else editnbVictory;" class="input-full-width">
+                          <input name="selectedBoxeurnbVictory" [(ngModel)]="selectedBoxeurs.nbVictory" matInput required  name="nbVictoryEdition" #nbVictoryEdition="ngModel">
+                          <mat-error *ngIf="nbVictoryEdition.invalid && (nbVictoryEdition.dirty || nbVictoryEdition.touched) && nbVictoryEdition.hasError('required')">Le nbVictory est obligatoire.</mat-error>
+                        </mat-form-field>
+                  </form>
+                  <ng-template #editnbVictory><span (click)="onSelect(boxeur)">{{boxeur.nbVictory}}</span></ng-template>
+              </td>
+            </ng-container>
+  <!-- nbKO Column -->
+  <ng-container matColumnDef="nbKO">
+    <th mat-header-cell *matHeaderCellDef> nbKO </th>
+    <td mat-cell *matCellDef="let boxeur">
+        <form #boxeurFormEdition="ngForm" id="boxeurFormEdition" (ngSubmit)="boxeurFormEdition.form.valid && onEdit(boxeurFormEdition)">
+            <mat-form-field *ngIf="(selectedBoxeurs && selectedBoxeurs === boxeur);else editnbKO;" class="input-full-width">
+                <input name="selectedBoxeurnbKO" [(ngModel)]="selectedBoxeurs.nbKO" matInput required name="nbKOEdition" #nbKOEdition="ngModel">
+                <mat-error *ngIf="nbKOEdition.invalid && (nbKOEdition.dirty || nbKOEdition.touched) && nbKOEdition.hasError('required')">Le nbKO est obligatoire.</mat-error>
+             </mat-form-field>
+        </form>
+        <ng-template #editnbKO><span (click)="onSelect(boxeur)">{{boxeur.nbKO}}</span></ng-template>
+    </td>
+  </ng-container>
+  <!-- nbTKO Column -->
+  <ng-container matColumnDef="nbTKO">
+    <th mat-header-cell *matHeaderCellDef> nbTKO </th>
+    <td mat-cell *matCellDef="let boxeur">
+        <form #boxeurFormEdition="ngForm" id="boxeurFormEdition" (ngSubmit)="boxeurFormEdition.form.valid && onEdit(boxeurFormEdition)">
+            <mat-form-field *ngIf="(selectedBoxeurs && selectedBoxeurs === boxeur);else editnbTKO;" class="input-full-width">
+                <input name="selectedBoxeurnbTKO" [(ngModel)]="selectedBoxeurs.nbTKO" matInput required name="nbTKOEdition" #nbTKOEdition="ngModel">
+                <mat-error *ngIf="nbTKOEdition.invalid && (nbTKOEdition.dirty || nbTKOEdition.touched) && nbTKOEdition.hasError('required')">Le nbTKO est obligatoire.</mat-error>
+            </mat-form-field>
+        </form>
+        <ng-template #editnbTKO><span (click)="onSelect(boxeur)">{{boxeur.nbTKO}}</span></ng-template>
+    </td>
+  </ng-container>
+  <!-- nbDefeat Column -->
+  <ng-container matColumnDef="nbDefeat">
+    <th mat-header-cell *matHeaderCellDef> nbDefeat </th>
+    <td mat-cell *matCellDef="let boxeur">
+        <form #boxeurFormEdition="ngForm" id="boxeurFormEdition" (ngSubmit)="boxeurFormEdition.form.valid && onEdit(boxeurFormEdition)">
+            <mat-form-field *ngIf="(selectedBoxeurs && selectedBoxeurs === boxeur);else editnbDefeat;" class="input-full-width">
+                <input name="selectedBoxeurnbDefeat" [(ngModel)]="selectedBoxeurs.nbDefeat" matInput required name="nbDefeatEdition" #nbDefeatEdition="ngModel">
+                <mat-error *ngIf="nbDefeatEdition.invalid && (nbDefeatEdition.dirty || nbDefeatEdition.touched) && nbDefeatEdition.hasError('required')">Le nbDefeat est obligatoire.</mat-error>
+            </mat-form-field>
+        </form>
+        <ng-template #editnbDefeat><span (click)="onSelect(boxeur)">{{boxeur.nbDefeat}}</span></ng-template>
+    </td>
+  </ng-container>
+  <!-- firstMatch Column -->
+  <ng-container matColumnDef="firstMatch">
+    <th mat-header-cell *matHeaderCellDef> firstMatch </th>
+    <td mat-cell *matCellDef="let boxeur">
+        <form #boxeurFormEdition="ngForm" id="boxeurFormEdition" (ngSubmit)="boxeurFormEdition.form.valid && onEdit(boxeurFormEdition)">
+            <mat-form-field *ngIf="(selectedBoxeurs && selectedBoxeurs === boxeur);else editfirstMatch;" class="input-full-width">
+                <input name="selectedBoxeurfirstMatch" [(ngModel)]="selectedBoxeurs.firstMatch" matInput required name="firstMatchEdition" #firstMatchEdition="ngModel">
+                <mat-error *ngIf="firstMatchEdition.invalid && (firstMatchEdition.dirty || firstMatchEdition.touched) && firstMatchEdition.hasError('required')">Le firstMatch est obligatoire.</mat-error>
+            </mat-form-field>
+        </form>
+        <ng-template #editfirstMatch><span (click)="onSelect(boxeur)">{{boxeur.firstMatch}}</span></ng-template>
+    </td>
+  </ng-container>
+  <!-- isActive Column -->
+  <ng-container matColumnDef="isActive">
+    <th mat-header-cell *matHeaderCellDef> isActive </th>
+    <td mat-cell *matCellDef="let boxeur">
+        <form #boxeurFormEdition="ngForm" id="boxeurFormEdition" (ngSubmit)="boxeurFormEdition.form.valid && onEdit(boxeurFormEdition)">
+            <mat-form-field *ngIf="(selectedBoxeurs && selectedBoxeurs === boxeur);else editisActive;" class="input-full-width">
+                <input name="selectedBoxeurisActive" [(ngModel)]="selectedBoxeurs.isActive" matInput required name="isActiveEdition" #isActiveEdition="ngModel">
+                <mat-error *ngIf="isActiveEdition.invalid && (isActiveEdition.dirty || isActiveEdition.touched) && isActiveEdition.hasError('required')">Le isActive est obligatoire.</mat-error>
+            </mat-form-field>
+        </form>
+        <ng-template #editisActive><span (click)="onSelect(boxeur)">{{boxeur.isActive}}</span></ng-template>
+    </td>
+  </ng-container>
+  <!-- cityBoxedIn Column -->
+  <ng-container matColumnDef="cityBoxedIn">
+    <th mat-header-cell *matHeaderCellDef> cityBoxedIn </th>
+    <td mat-cell *matCellDef="let boxeur">
+        <form #boxeurFormEdition="ngForm" id="boxeurFormEdition" (ngSubmit)="boxeurFormEdition.form.valid && onEdit(boxeurFormEdition)">
+            <mat-form-field *ngIf="(selectedBoxeurs && selectedBoxeurs === boxeur);else editcityBoxedIn;" class="input-full-width">
+                <input name="selectedBoxeurcityBoxedIn" [(ngModel)]="selectedBoxeurs.cityBoxedIn" matInput required name="cityBoxedInEdition" #cityBoxedInEdition="ngModel">
+                <mat-error *ngIf="cityBoxedInEdition.invalid && (cityBoxedInEdition.dirty || cityBoxedInEdition.touched) && cityBoxedInEdition.hasError('required')">Le cityBoxedIn est obligatoire.</mat-error>
+            </mat-form-field>
+        </form>
+        <ng-template #editcityBoxedIn><span (click)="onSelect(boxeur)">{{boxeur.cityBoxedIn}}</span></ng-template>
+    </td>
+  </ng-container>
+            <!-- nbGame Column -->
+            <ng-container matColumnDef="nbGame">
+              <th mat-header-cell *matHeaderCellDef> nbGame </th>
+              <td mat-cell *matCellDef="let boxeur">
+                  <form #boxeurFormEdition="ngForm" id="boxeurFormEdition" (ngSubmit)="boxeurFormEdition.form.valid && onEdit(boxeurFormEdition)">
+                      <mat-form-field *ngIf="(selectedBoxeurs && selectedBoxeurs === boxeur);else editnbGame;" class="input-full-width">
+                          <input name="selectedBoxeurnbGame" [(ngModel)]="selectedBoxeurs.nbGame" matInput required name="nbGameEdition" #nbGameEdition="ngModel">
+                          <mat-error *ngIf="nbGameEdition.invalid && (nbGameEdition.dirty || nbGameEdition.touched) && nbGameEdition.hasError('required')">Le nbGame est obligatoire.</mat-error>
+                        </mat-form-field>
+                  </form>
+                  <ng-template #editnbGame><span (click)="onSelect(boxeur)">{{boxeur.nbGame}}</span></ng-template>
+              </td>
+            </ng-container>
+        <!-- weightClass Column -->
+        <ng-container matColumnDef="weightClass">
+          <th mat-header-cell *matHeaderCellDef> weightClass </th>
+          <td mat-cell *matCellDef="let boxeur">
+              <form #boxeurFormEdition="ngForm" id="boxeurFormEdition" (ngSubmit)="boxeurFormEdition.form.valid && onEdit(boxeurFormEdition)">
+                  <mat-form-field *ngIf="(selectedBoxeurs && selectedBoxeurs === boxeur);else editweightClass;" class="input-full-width">
+                      <input name="selectedBoxeurweightClass" [(ngModel)]="selectedBoxeurs.weightClass" matInput required minlength="2" maxlength="50" name="weightClassEdition" #weightClassEdition="ngModel">
+                      <mat-error *ngIf="weightClassEdition.invalid && (weightClassEdition.dirty || weightClassEdition.touched) && weightClassEdition.hasError('required')">Le weightClass est obligatoire.</mat-error>
+                      <mat-error *ngIf="weightClassEdition.invalid && (weightClassEdition.dirty || weightClassEdition.touched) && weightClassEdition.hasError('minlength')">Le weightClass doit contenir au moins 2 caractères.</mat-error>
+                      <mat-error *ngIf="weightClassEdition.invalid && (weightClassEdition.dirty || weightClassEdition.touched) && weightClassEdition.hasError('maxlength')">Le weightClass doit contenir au maximum 50 caractères.</mat-error>
+                  </mat-form-field>
+              </form>
+              <ng-template #editweightClass><span (click)="onSelect(boxeur)">{{boxeur.weightClass}}</span></ng-template>
+          </td>
+        </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> </th>
+      <td mat-cell *matCellDef="let boxeur" class="boutonsAction">
+          <button *ngIf="(selectedBoxeurs && selectedBoxeurs === boxeur);else editButton;" color="primary" form="boxeurFormEdition" 
+              mat-button><i class="material-icons">done</i></button>
+          <ng-template #editButton>
+              <form (ngSubmit)="onSelect(boxeur)">
+                  <button mat-button><i class="material-icons">edit</i></button>
+              </form>
+          </ng-template>
+          <form (ngSubmit)="onDelete(boxeur)">
+              <button mat-button ><i class="material-icons">delete</i></button>
+          </form>
+      </td>
+   </ng-container>
+   
+  
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+  </table>
+  
+  <form #boxeurFormAjout="ngForm" id="boxeurFormAjout" (ngSubmit)="onAdd(tableBoxeurs, boxeurFormAjout);">
+    <mat-form-field class="input-full-width">
+        <input type="text" name="nickname" required minlength="2" maxlength="50" [(ngModel)]="newBoxeur.nickname" matInput #nickname="ngModel" placeholder="Nouveau boxeur">
+        <button matSuffix  type="submit" mat-icon-button color="primary" [disabled]="!boxeurFormAjout.form.valid"><i class="material-icons">add</i></button>
+        <mat-error *ngIf="nickname.invalid && (nickname.dirty || nickname.touched) && nickname.hasError('required')">Le nickname est obligatoire.</mat-error>
+        <mat-error *ngIf="nickname.invalid && (nickname.dirty || nickname.touched) && nickname.hasError('minlength')">Le nickname doit contenir au moins 2 caractères.</mat-error>
+        <mat-error *ngIf="nickname.invalid && (nickname.dirty || nickname.touched) && nickname.hasError('maxlength')">Le nickname doit contenir au maximum 50 caractères.</mat-error>
+    </mat-form-field>
+ </form>

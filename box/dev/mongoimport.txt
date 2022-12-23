@@ -1,0 +1,1 @@
+mongoimport --db boxeurs --collection boxeurs --drop --file dev/boxeurs.json

@@ -1,0 +1,62 @@
+[{
+    "_id":"63495a7dd4e4ffaeff41ab7e",
+    "nbGame":5,
+    "nbVictory":4,
+    "nbKO":4,
+    "nbTKO":0,
+    "nbDefeat":0,
+    "name":"Richard Steele",
+    "nickname":"The Man Of",
+    "firstMatch":"1940-10-29T00:00:00.000Z",
+    "isActive":false,
+    "opponents":[
+    {
+        "name":"Connor McGregor",
+        "nickname":"The Notorious",
+        "_id":"63495df2fe2fb55babfece5f"
+    },
+    {
+        "name":"Ray Charles Leonard",
+        "nickname":"Sugar",
+        "_id":"63495df2fe2fb55babfece60"
+    },
+    {
+        "name":"Saul Alvarez",
+        "nickname":"Canelo",
+        "_id":"63495df2fe2fb55babfece61"
+    }],
+    "cityBoxedIn":["Las Vegas","Paradise","Arlington"],
+    "weightClass":"Middleweight"
+},
+{
+    "_id":"63495dd4fe2fb55babfece59",
+    "nbGame":62,
+    "nbVictory":58,
+    "nbKO":39,
+    "nbTKO":0,
+    "nbDefeat":2,
+    "nickname":"Canelo",
+    "firstMatch":"2005-10-29T00:00:00.000Z",
+    "isActive":true,
+    "opponents":[
+        {
+            "name":"Gennadiy Gennadyevich Golovkin",
+            "nickname":"Triple G",
+            "_id":"63495dd4fe2fb55babfece5a"
+        },
+        {
+            "name":"Amir Khan",
+            "nickname":"King",
+            "_id":"63495dd4fe2fb55babfece5b"
+        },
+        {
+            "name":"Floyd Mayweather Jr.",
+            "nickname":"Pretty Boy",
+            "_id":"63495dd4fe2fb55babfece5c"
+        }],
+    "cityBoxedIn":["Mexico City","Los Angeles","Guadalajaran"],
+    "weightClass":"Middleweight",
+    "name":"Saul Alvarez"
+},
+{
+    "_id":"634964415f688e218bbf2041","nbGame":62,"nbVictory":58,"nbKO":0,"nbTKO":0,"nbDefeat":2,"nickname":"Pretty Boy","firstMatch":"2001-10-29T00:00:00.000Z","isActive":true,"opponents":[{"name":"Gennadiy Gennadyevich Golovkin","nickname":"Triple G","_id":"63495dd4fe2fb55babfece5a"},{"name":"Amir Khan","nickname":"King","_id":"63495dd4fe2fb55babfece5b"}],"cityBoxedIn":["Mexico City","Los Angeles","Guadalajaran"],"weightClass":"Flyweight","name":"Floyd Mayweather Jr.","__v":0}]
